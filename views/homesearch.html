@@ -1,0 +1,109 @@
+    <div>
+      <ol class="breadcrumb">
+          <li><a ui-sref="app">Home</a></li>
+          <li><a ui-sref="app.hoemsearch">Find</a></li>
+      </ol>
+    </div>    
+
+
+    <div class="row" ng-controller="SearchController">
+        <div class="container">
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                   <h3 class="panel-title">Find Your Home</h3>
+               </div>
+               
+              <div class="panel-body">
+                <form class="form-horizontal" method="GET" role="form" ng-submit="search()" name="searchForm">
+                    <div>
+                        <img class="searchlogo"src="../img/logo.png"/ class="img-rounded">
+                        <br>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="area" class="col-sm-2 control-label">Purchase Type</label>
+                        <div class="col-sm-3 ">
+                            <select class="form-control" ng-model="searchInfo.purchasetype" ng-options="p.value as p.label for p in purchasetype">
+                                <option value="">Buyer's Purchase Type</option>
+                            </select>
+                        </div>
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="area" class="col-sm-2 control-label">State</label>
+                            <div class="col-sm-3 ">
+                                <select class="form-control" ng-model="searchInfo.state" ng-options="s.value as s.label for s in state">
+                                    <option value="">State</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="area" class="col-sm-2 control-label">Property Type</label>
+                            <div class="col-sm-3 ">
+                                <select class="form-control" ng-model="searchInfo.propertytype" ng-options="p.value as p.label for p in propertytype">
+                                    <option value="">All Property Type</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="area" class="col-sm-2 control-label">Property Status</label>
+                            <div class="col-sm-3 ">
+                                <select class="form-control" ng-model="searchInfo.propertystatus" ng-options="s.value as s.label for s in propertystatus">
+                                    <option value="">Property Status</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="area" class="col-sm-2 control-label">Area Post Code</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" placeholder="Area Post Code" ng-model="searchInfo.areacode">
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-warning search col-sm-offset-2 col-sm-3">Search</button>
+                        </div>
+                    
+                </form>
+              </div>
+            </div>
+
+
+            <div>
+                <ul class="media-list">
+                <li class="media" ng-repeat="p in searchedproperties">
+                     <div class="media-left media-middle">
+                        <a ui-sref="app.propertydetail({id: p._id})">
+                            <img class="media-object img-thumbnail" src="{{p.images[0].path}}" width="300px" height="200px">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        
+                        <h2 class="media-heading propertytitle">{{p.title}}</h2>
+                    
+                        <i class="fa fa-car" aria-hidden="true"></i>
+                        <span class="badge">{{p.car}}</span>
+
+                        <i class="fa fa-tint" aria-hidden="true"></i>
+                        <span class="badge">{{p.washroom}}</span>
+
+                        <i class="fa fa-bed" aria-hidden="true"></i>
+                        <span class="badge">{{p.bedroom}}</span>
+                        
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span class="label label-danger label-xs">{{p.areacode}}</span>
+
+                        <br>
+                        
+                        <p class="propertyds">{{p.description}}</p>
+
+                    </div>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>

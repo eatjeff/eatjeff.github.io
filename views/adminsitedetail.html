@@ -1,0 +1,55 @@
+<div class="container" ng-controller="PartnersiteController">
+        <div class="row row-content">
+            <ul class="media-list">
+                <li class="media" ng-repeat="s in sites">
+                    <div class="media-body">
+                        <h2 class="media-heading propertytitle">{{s.name}} </h2>
+                        <p class="propertyds">{{s.link}}</p>
+
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#updateSites" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button>
+
+                        <!-- Indicates a dangerous or potentially negative action -->
+                        <button type="button" class="btn btn-default" ng-click="deleteSite()" ui-sref="app.adminnewsdetail"><i class="fa fa-trash" aria-hidden="true"></i>Delete
+                        </button>
+
+                    </div>
+                </li>
+            </ul>
+    </div>
+</div>
+
+<!-- Modal -->
+        <div class="modal fade" id="updateSites" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">News Update</h4>
+              </div>
+              <div class="modal-body">
+                    <form class="form-horizontal" name="propertyUpdateForm">
+                        <div class="form-group">
+                            <label for="imageTitle" class="col-sm-2 control-label">name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="Title input" ng-model="partnersite.name">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="imageTitle" class="col-sm-2 control-label">link</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="Title input" ng-model="partnersite.link">
+                            </div>
+                          </div>
+
+                          
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        <button type="button" class="btn btn-primary" ui-sref=""ng-click="updateSite()">save changes</button>
+
+                    </form>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div>
+  <ol class="breadcrumb">
+      <li><a ui-sref="app">Home</a></li>
+      <li><a ui-sref="app.residential">Residential</a></li>
+  </ol>
+</div>
+
+<div class="container" ng-controller="PropertyController">
+        <div class="row row-content">
+            <ul class="media-list">
+                <li class="media" ng-repeat="r in residential">
+                    <div class="media-left">
+                        <img class="media-object" width="300px" height="200px"src="{{r.images[0].path}}"/>
+                    </div>
+                    <div class="media-body">
+                        
+                        <h2 class="media-heading propertytitle">{{r.title}}</h2>
+                    
+                        <i class="fa fa-car" aria-hidden="true"></i>
+                        <span class="badge">{{r.car}}</span>
+
+                        <i class="fa fa-tint" aria-hidden="true"></i>
+                        <span class="badge">{{r.washroom}}</span>
+
+                        <i class="fa fa-bed" aria-hidden="true"></i>
+                        <span class="badge">{{r.bedroom}}</span>
+                        
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span class="label label-danger label-xs">{{r.areacode}}</span>
+
+                        <br>
+                        
+                        <p class="propertyds">{{r.description}}</p>
+
+                    </div>
+                </li>
+            </ul>
+    </div>
+</div>
+
+    

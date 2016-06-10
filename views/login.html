@@ -1,0 +1,33 @@
+
+    <form class="form-horizontal" ng-submit="login()" name="LoginForm" ng-controller="LoginController">
+            <div>
+                <img class = "signin" src="../img/logo.png"/ class="img-rounded">
+                <br>
+                <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+                <p ng-show="message">{{message}}</p>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label" for="username">Username:</label>
+                <div class="col-sm-5">
+                    <input type="email" class="form-control input-sm" id="email" placeholder="Email"
+                ng-model="loginuser.email" required>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label" for="password">Password:</label>
+                <div class="col-sm-5">
+                    <input type="passowrd" class="form-control input-sm" id="password" placeholder="Password" ng-model="loginuser.password" required>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-5">
+                  <button type="submit" class="btn btn-info btn-sm loginbutton1" >Sign In</button>
+                  <button type="submit" ui-sref="app" class="btn btn-info btn-sm loginbutton1" >Cancel</button>
+                </div>
+            </div>
+            
+    </form>
+              

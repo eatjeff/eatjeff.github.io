@@ -1,0 +1,30 @@
+<div>
+  <ol class="breadcrumb">
+      <li><a ui-sref="app">Home</a></li>
+      <li><a ui-sref="app.newdevelopments">New Developments</a></li>
+  </ol>
+</div>
+
+<div class="container" ng-controller="DevController">
+        <div class="row row-content">
+            <ul class="media-list">
+                <li class="media" ng-repeat="d in devs">
+                    <div class="media-left media-middle">
+                        <a>
+                            <img class="media-object" width="300px" height="200px"src="{{d.images[0].path}}"/>
+                        </a>
+                    </div>
+
+                    <div class="media-body">
+                        
+                        <h2 class="media-heading propertytitle">{{d.name}}</h2>
+                    
+                        <p class="propertyds">{{d.description}}</p>
+
+                    </div>
+                </li>
+            </ul>
+    </div>
+</div>
+
+    

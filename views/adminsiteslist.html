@@ -1,0 +1,14 @@
+<div class="container" ng-controller="PartnersiteController">
+    <div class="row row-content">
+        <ul class="media-list">
+            <li class="media" ng-repeat="s in sites">
+                <div class="media-body">
+                    <h2 class="media-heading propertytitle">{{s.name}} </h2>
+                    <a ui-sref="app.adminsitedetail({id: s._id})">Detail</a>
+                    <p class="propertyds">{{s.link}}</p>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

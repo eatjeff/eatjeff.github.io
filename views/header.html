@@ -1,0 +1,119 @@
+ <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" ui-sref="app">
+                        <p>Aus Estate Pty</p>
+                    </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a ui-sref="app.homesearch">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="app.aboutus">
+                            About Us
+                        </a>
+                    </li>
+                    <li><a class="dropdown-toggle" type="button" id="dropdownMenubuy" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Buy<span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenubuy">
+                            <li><a ui-sref="app.residential">Residential</a>
+                            </li>
+                            <li><a ui-sref="app.commercial">Commercial</a></li>
+                            <li><a ui-sref="app.openinspection">Open Inspection</a>
+                            </li>
+                            <li><a ui-sref="app.auction">Auction</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="dropdown-toggle" id="dropdownMenubrowse" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
+                      Rent
+                      <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenubrowse">
+                            <li><a ui-sref="app.residential">Residential</a>
+                            </li>
+                            <li><a ui-sref="app.commercial">Commercial</a></li>
+                            <li><a ui-sref="app.openinspection">Open Inspection</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    
+                    
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"
+                         role="button" aria-haspopup="true" aria-expanded="false">
+                          Project <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="app.residential">Residential</a></li>
+                            <li><a ui-sref="app.commercial">Commercial</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a ui-sref="app.newdevelopments">New Development</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a> Sold</a></li>
+
+                    <li><a ui-sref="app.news"> News</a></li>
+
+                    <li><a ui-sref="app.contactus"> Contact Us</a></li>
+
+                    <li>
+                        <a id="signin" ui-sref="app.login" ng-hide="currentUser">Staff SignIn</a>
+                    </li>
+                    <li>
+                        <a id="signin"  ui-sref="app.agentLogin" ng-hide="currentAgent" ng-hide="currentUser">Agent SignIn
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>Welcome</h1>
+                        <h3>Find your dream home</h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook"></i> <span class="network-name">Facebook
+                                </span></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-envelope-o"></i> <span class="network-name">Email</span></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-default btn-lg"><i class="fa fa-youtube"></i> <span class="network-name">Youtube</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->

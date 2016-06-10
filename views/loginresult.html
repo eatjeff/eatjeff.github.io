@@ -1,0 +1,42 @@
+
+
+
+    <div class="row">
+            <div class="container" ng-controller="RegisterController">
+
+                <div class="alert alert-success" role="alert" >
+                    <p ng-show="currentUser">Successfully Login, Welcome Back ,{{currentUser.firstname}}</p>
+                    
+                    <a ui-sref="app.login" ng-click="logout()">logout</a>
+                </div>
+                
+
+                <br>
+
+                <div class="list-group">
+                  <button type="button" class="list-group-item" ui-sref="app.register"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Staff Register</button>
+                  <button type="button" class="list-group-item"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                   Staff Delete</button>
+                  <button type="button" class="list-group-item" 
+                  ui-sref="app.createAgent"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Create Agent Account</button>
+                  <button type="button" class="list-group-item list-group-item-warning"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Delete Agent Account</button>
+                  <button type="button" class="list-group-item" ui-sref="app.adminuploadproperty"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Add Property</button>
+                  <button type="button" class="list-group-item list-group-item-warning" ui-sref="app.adminpropertylist"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Delete Property</button>
+                  <button type="button" class="list-group-item"><span class="glyphicon glyphicon-chevron-right" ui-sref="app.adminuploadnews" aria-hidden="true"></span> Add News
+                  </button>
+                  <button type="button" ui-sref="app.adminnewslist" class="list-group-item list-group-item-warning"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Delete News
+                  </button>
+                  <button type="button" class="list-group-item " ui-sref="app.adminuploadpartnersites"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Add Partner Sites
+                  </button>
+                  <button type="button" class="list-group-item  list-group-item-warning" ui-sref="app.adminsiteslist"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Delete Partner Sites
+                  </button>
+                  <button type="button" class="list-group-item" ui-sref="app.adminuploadnewdevs"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Add Development
+                  </button>
+                  <button type="button" class="list-group-item  list-group-item-warning" ui-sref="app.admindevlist"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Delete Development
+                  </button>
+                </div>
+                
+            </div>
+    </div>
+
+    

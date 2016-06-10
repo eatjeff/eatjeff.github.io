@@ -1,0 +1,20 @@
+<div class="container" ng-controller="DevController">
+        <div class="row row-content">
+            <ul class="media-list">
+                <li class="media" ng-repeat="d in devs">
+                    
+                    <div class="media-body">
+                        <h2 class="media-heading propertytitle">{{d.name}}</h2>
+
+                        
+                        <p >{{d.description}}</p>
+
+                        <a ui-sref="app.admindevdetail({id: d._id})" color="BLACK">Details</a><span class="glyphicon glyphicon-chevron-right" aria-hidden="true" ></span>
+
+                    </div>
+                </li>
+                <hr>
+            </ul>
+    </div>
+</div>
+

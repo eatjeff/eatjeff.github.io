@@ -1,0 +1,102 @@
+<div>
+  <ol class="breadcrumb">
+      <li><a ui-sref="app">Home</a></li>
+      <li><a ui-sref="app.contactus">Contact Us</a></li>
+  </ol>
+</div>
+
+
+<div class="row" ng-controller="FeedbackController">
+        
+    <div class="media">
+      <div class="media-left media-middle">
+        <span>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.918215734881!2d144.96114724987112!3d-37.815384579652715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642b4e5327097%3A0xf737e2524cc69725!2s343+Little+Collins+St%2C+Melbourne+VIC+3000!5e0!3m2!1szh-CN!2sau!4v1464521222354" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </span>
+      </div>
+      <div class="media-body">
+        <div class="col-md-3">
+            <h4 class="media-heading">Aus Estate Pty Ltd</h4>
+                <p>
+                    <h5>Our Address</h5>
+                    <address>
+                      343 Lt Collins St <br>
+                      Melbourne <br>
+                      VIC 3000 <br>
+                      <i class="fa fa-phone"></i>: +61 (03) 9600 0080<br>
+                      <i class="fa fa-envelope"></i> :
+                       <a href="mailto:info@austestate.com.au">info@austestate.com.au
+                       </a>
+                   </address>
+                </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="col-xs-12">
+            <h3>Send Your Feedback</h3>
+        </div>
+        <hr>
+        <br>
+        <div class="col-xs-12 col-sm-9">
+            <form class="form-horizontal" role="form" name="feedback" ng-submit="sendFeedback()">
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">First Name</label>                        
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name"
+                        ng-model="feedback.firstName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname" class="col-sm-2 control-label">Last Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name"
+                            ng-model="feedback.lastName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telnum" class="col-xs-12 col-sm-2 control-label">Contact Tel.</label>
+                        <div class="col-xs-7 col-sm-6 col-md-10">
+                                <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Tel. number"
+                                ng-model="feedback.telnumber">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailid" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Email" ng-model="feedback.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                       <div class="checkbox col-sm-5 col-sm-offset-2">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="approve" value=""
+                                ng-model="feedback.agree">
+                                <strong>May we contact you?</strong>
+                            </label>
+                        </div>
+                        <div class="col-sm-3 col-sm-offset-1">
+                            <select class="form-control" ng-model="feedback.mychannel" ng-options="channel.value as channel.label for channel in channels">
+                                <option value="">Tel. or Email?</option>
+                            </select>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="feedback" class="col-sm-2 control-label">Your Feedback</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="feedback" name="feedback" rows="12" ng-model="feedback.comments"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">Send Feedback</button>
+                        </div>
+                    </div>
+                </form>
+            <br>
+
+        </div>
+        <br>
+    </div>
+

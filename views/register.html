@@ -1,0 +1,45 @@
+
+    <form class="form-horizontal" ng-submit="register()" name="RegisterForm" ng-controller="RegisterController">
+            <div>
+                <img class="signin"src="../img/logo.png"/ class="img-rounded">
+                <br>
+                <h4 class="modal-title" id="myModalLabel">Register</h4>
+                <p ng-show="message">{{message}}</p>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label" for="username">Firstname:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control input-sm" id="username" placeholder="Firstname" ng-model="user.firstname" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label" for="password">Lastname:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control input-sm" id="password" placeholder="Lastname" ng-model="user.lastname" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label" for="email">Email:</label>
+                <div class="col-sm-5">
+                    <input type="email" class="form-control input-sm" id="email" placeholder="Email@" ng-model="user.email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label" for="password">Password:</label>
+                <div class="col-sm-5">
+                    <input type="passowrd" class="form-control input-sm" id="password" placeholder="Password" ng-model="user.password" required>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-5">
+                  <button type="submit"class="btn btn-info btn-sm loginbutton1">Register</button>
+                  <button type="submit" ui-serf="app.loginresult"class="btn btn-info btn-sm loginbutton1">Cancel</button>
+                </div>
+            </div>
+            
+            
+    </form>
+
+

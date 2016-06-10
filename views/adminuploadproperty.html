@@ -1,0 +1,381 @@
+
+
+    <div class="row">
+            <div class="container" >
+                    <div class="panel panel-default">
+                          <div class="panel-heading">Property Information Input</div>
+                              <div class="panel-body">
+                                    <form class="form-horizontal" ng-controller="PropertyInfoController" name="propertyForm">
+
+
+                                      <div class="form-group">
+                                        <label for="imageTitle" class="col-sm-2 control-label">Title</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="Title input" ng-model="propertyDescription.title">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="area" class="col-sm-2 control-label">Area Post Code</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="Area Post Code" ng-model="propertyDescription.areacode">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="address" class="col-sm-2 control-label">Address</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                                                <input type="text" class="form-control" placeholder="Where is it?" ng-model="propertyDescription.address">
+                                            </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="price" class="col-sm-2 control-label">Estimated Price</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></div>
+                                                <input type="text" class="form-control" placeholder="Price" ng-model="propertyDescription.price">
+                                            </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="price" class="col-sm-2 control-label">Land Area</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><span>sqm</span></div>
+                                                <input type="text" class="form-control" placeholder="Size" ng-model="propertyDescription.size">
+                                            </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="car" class="col-sm-2 control-label">Parking</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-car" aria-hidden="true"></i></div>
+                                                <input type="text" class="form-control" placeholder="How many car?" ng-model="propertyDescription.car">
+                                            </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="washroom" class="col-sm-2 control-label">Washroom</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-tint" aria-hidden="true"></i></div>
+                                                <input type="text" class="form-control" placeholder="How many washrooms?" ng-model="propertyDescription.washroom">
+                                            </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="washroom" class="col-sm-2 control-label">Bedroom</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-bed" aria-hidden="true"></i></div>
+                                                <input type="text" class="form-control" placeholder="How many bedrooms?" ng-model="propertyDescription.bedroom">
+                                            </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                            <label for="description" class="col-sm-2 control-label">Property Descriptiopn</label>
+                                            <div class="col-sm-8">
+                                                <textarea class="form-control" id="description" name="description" rows="12"
+                                                ng-model="propertyDescription.description"></textarea>
+                                            </div>
+                                      </div>
+                                      <div class="form-group">
+                                            <div class="col-sm-3 col-sm-offset-2">
+                                                    <select class="form-control" ng-model="propertyDescription.usage" ng-options="s.value as s.label for s in usage">
+                                                        <option value="">Buyer's Usage</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+
+                                      <div class="form-group">
+                                            <div class="col-sm-3 col-sm-offset-2">
+                                                <select class="form-control" ng-model="propertyDescription.purchasetype" ng-options="p.value as p.label for p in purchasetype">
+                                                    <option value="">Buyer's Purchase Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                            
+                                        <div class="form-group">
+                                                <div class="col-sm-3 col-sm-offset-2">
+                                                    <select class="form-control" ng-model="propertyDescription.state" ng-options="s.value as s.label for s in state">
+                                                        <option value="">State</option>
+                                                    </select>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-3 col-sm-offset-2">
+                                                    <select class="form-control" ng-model="propertyDescription.propertytype" ng-options="p.value as p.label for p in propertytype">
+                                                        <option value="">All Property Type</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <div class="col-sm-3 col-sm-offset-2">
+                                                    <select class="form-control" ng-model="propertyDescription.propertystatus" ng-options="s.value as s.label for s in propertystatus">
+                                                        <option value="">Property Status</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inspection" class="col-sm-2 control-label">Inspection Date</label>
+                                            <div class="col-sm-3">
+                                                <label for="inspection" class="col-sm-2 control-label">From</label>
+                                                <p class="input-group">
+                                                   <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="propertyDescription.inspectionbegindate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                                   <span class="input-group-btn">
+                                                      <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                    </span>
+                                                </p>
+
+                                                <label for="to" class="col-sm-2 control-label">To</label>
+                                                <p class="input-group">
+                                                   <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="propertyDescription.inspectionenddate" is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                                   <span class="input-group-btn">
+                                                      <button type="button" class="btn btn-default" ng-click="open3()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                    </span>
+                                                </p>
+                                                <label for="inspection">Time</label>
+                                                <input type="text" class="form-control" placeholder="e.g. 9.00 pm- 7.00 pm" ng-model="propertyDescription.inspectiontime">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inspection" class="col-sm-2 control-label">Auction Date</label>
+                                            <div class="col-sm-3">
+                                                <p class="input-group">
+                                                   <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="propertyDescription.auctiondate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                                   <span class="input-group-btn">
+                                                      <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                    </span>
+                                                </p>
+                                                  <span for="inspection">Time</span>
+                                                  <input type="text" class="form-control" placeholder="e.g. 9.00 pm- 7.00 pm" ng-model="propertyDescription.auctiontime">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-default" ng-click="submitPropertyInfo()">Submit</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                              </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                          <div class="panel-heading">Uploading an Image</div>
+                              <div class="panel-body">
+                                    <form class="form-horizontal" ng-controller="ImageUploadController" name="formImage" enctype="multipart/form-data" method="post">
+                                      <div class="form-group">
+                                        <label for="imageTitle" class="col-sm-2 control-label">Title</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="Title input" ng-model="title">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                            <label for="description" class="col-sm-2 control-label">Image type</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" ng-model="images.type" ng-options="t.value as t.label for t in types">
+                                                    <option value="">Normal or Draft</option>
+                                                </select>
+                                            </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="InputFile" class="col-sm-2 control-label">Image File input</label>
+                                        <div class="col-sm-8">
+                                            <input type="file" id="InputFile" ngf-select ng-model="file" name="file">
+                                        </div>
+                                      </div>
+
+                                      <div ngf-thumbnail="file">
+                                        <label for="filepreview" class="col-sm-2 control-label">File Preview</label>
+                                        <div class="col-sm-8">
+                                            <img ngf-src="file" ngf-background="file" ngf-resize="{width: 100, height: 100}"ngf-thumbnail="file" class="thumb">
+                                        </div>
+                                      </div>
+                                      
+                                      <br>
+
+                                      <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default submit" ng-click="submitImage()">Submit Image</button>
+                                        </div>
+                                      </div>
+
+                                    </form>
+                              </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                          <div class="panel-heading">Uploading an Draft Image</div>
+                              <div class="panel-body">
+                                    <form class="form-horizontal" ng-controller="DraftUploadController" name="formdraft" enctype="multipart/form-data" method="post">
+                                      <div class="form-group">
+                                        <label for="draftTitle" class="col-sm-2 control-label">Title</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="Title input" ng-model="title">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="InputFile" class="col-sm-2 control-label">Draft File input</label>
+                                        <div class="col-sm-8">
+                                            <input type="file" id="InputFile" ngf-select ng-model="file" name="file">
+                                        </div>
+                                      </div>
+
+                                      <div ngf-thumbnail="file">
+                                        <label for="filepreview" class="col-sm-2 control-label">File Preview</label>
+                                        <div class="col-sm-8">
+                                            <img ngf-src="file" ngf-background="file" ngf-resize="{width: 100, height: 100}"ngf-thumbnail="file" class="thumb">
+                                        </div>
+                                      </div>
+                                      
+                                      <br>
+
+                                      <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default submit" ng-click="submitDraftImage()">Submit Image</button>
+                                        </div>
+                                      </div>
+
+                                    </form>
+                              </div>
+                        </div>
+                        
+                        <div class="panel panel-default">
+                          <div class="panel-heading">Uploading Video</div>
+                              <div class="panel-body">
+                                    <form class="form-horizontal" ng-controller="VideoController" name="formlinkVideo" enctype="multipart/form-data" method="post">
+                                      <div class="form-group">
+                                        <label for="Title" class="col-sm-2 control-label">Title</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="Title input" ng-model="video.title">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="videoTitle" class="col-sm-2 control-label">Name</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="Name input" ng-model="video.propertytitle">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="videolink" class="col-sm-2 control-label" >Video Link</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="link" name="link" class="form-control" placeholder="link input" ng-model="video.videolink">
+                                        </div>
+                                      </div>
+                                      <br>
+
+                                      <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button ng-click="uploadVideo()"type="submit" class="btn btn-default submit">Submit Video</button>
+                                        </div>
+                                      </div>
+
+                                    </form>
+                              </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                          <div class="panel-heading">Schools Nearby</div>
+                              <div class="panel-body">
+                                    <form class="form-horizontal" ng-controller="SchoolController" name="formschool" enctype="multipart/form-data" method="post"> 
+                                      <div class="form-group">
+                                        <label for="name" class="col-sm-2 control-label">Title</label>
+                                        <div class="col-xs-7 col-sm-6 col-md-8">
+                                            <input type="text" class="form-control" placeholder="Title" ng-model="school.title">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="name" class="col-sm-2 control-label">School Name</label>
+                                        <div class="col-xs-7 col-sm-6 col-md-8">
+                                            <input type="text" class="form-control" placeholder="School Name" ng-model="school.name">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="schooladdress" class="col-sm-2 control-label">Address</label>
+                                        <div class="col-xs-7 col-sm-6 col-md-8">
+                                            <input type="text" class="form-control" placeholder="Address Input" ng-model="school.address">
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="telnum" class="col-xs-12 col-sm-2 control-label">Contact Tel.</label>
+                                          <div class="col-xs-7 col-sm-6 col-md-8">
+                                                <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Tel. number"
+                                                ng-model="school.tel">
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="emailid" class="col-sm-2 control-label">Email</label>
+                                          <div class="col-xs-7 col-sm-6 col-md-8">
+                                              <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Email" ng-model="school.email">
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="schoolweb" class="col-sm-2 control-label" >Website</label>
+                                        <div class="col-xs-7 col-sm-6 col-md-8">
+                                            <input type="text" id="link" name="link" class="form-control" placeholder="Website" ng-model="school.website">
+                                        </div>
+                                      </div>
+                                      <br>
+
+                                      <div class="form-group">
+                                          <label for="schooltype" class="col-sm-2 control-label" >School Type</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" ng-model="school.schooltype" ng-options="s.value as s.label for s in schooltype">
+                                                    <option value="">School Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="schoollevel" class="col-sm-2 control-label" >School Level</label>
+                                            <div class="col-sm-3">
+                                                <select class="form-control" ng-model="school.schoollevel" ng-options="s.value as s.label for s in schoollevel">
+                                                    <option value="">School Level</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button ng-click="uploadSchool()" type="submit" class="btn btn-default submit">Submit School</button>
+                                        </div>
+                                      </div>
+
+                                    </form>
+                              </div>
+                        </div>
+
+
+                    </div>
+                  </div>
+
+
+
+    

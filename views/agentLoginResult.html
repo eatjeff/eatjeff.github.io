@@ -1,0 +1,18 @@
+
+
+
+    <div class="row">
+            <div class="container" ng-controller="AgentController">
+
+                <div class="alert alert-success" role="alert" >
+                    <p>success</p>
+                    <div ng-show="currentAgent">
+                        <p>Hi, {{currentAgent.agentname}}</p>
+                        <a ui-sref="app" ng-click="agentlogout()">logout</a>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+
+    

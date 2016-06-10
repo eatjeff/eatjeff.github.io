@@ -1,0 +1,55 @@
+    
+
+
+    <div class="row" ng-controller="HeadController">
+        <div class="container">
+
+          <div class="panel-body">
+            <form class="form-horizontal" method="GET" role="form" ng-submit="navsearch()" name="navsearchForm">
+
+                    <div class="form-group">
+                        <label for="area" class="col-sm-2 control-label">Area Post Code</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" placeholder="Area Post Code" ng-model="navsearchinfo.areacode">
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-warning search col-sm-offset-2 col-sm-3">Search</button>
+                    </div>
+                
+            </form>
+          </div>
+            <div>
+                <ul class="media-list">
+                    <li class="media" ng-repeat="n in navproperties">
+                         <div class="media-left media-middle">
+                            <img class="media-object img-thumbnail" src="{{n.images[0].path}}" width="300px" height="200px">
+                        </div>
+                        <div class="media-body">
+                            
+                            <h2 class="media-heading propertytitle">{{n.title}}</h2>
+                        
+                            <i class="fa fa-car" aria-hidden="true"></i>
+                            <span class="badge">{{n.car}}</span>
+
+                            <i class="fa fa-tint" aria-hidden="true"></i>
+                            <span class="badge">{{n.washroom}}</span>
+
+                            <i class="fa fa-bed" aria-hidden="true"></i>
+                            <span class="badge">{{n.bedroom}}</span>
+                            
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span class="label label-danger label-xs">{{n.areacode}}</span>
+
+                            <br>
+                            
+                            <p class="propertyds">{{n.description}}</p>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>

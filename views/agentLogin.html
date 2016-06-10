@@ -1,0 +1,32 @@
+
+    <form class="form-horizontal" ng-submit="agentlogin()" name="agentLoginForm" ng-controller="AgentController">
+            <div>
+                <img src="../img/logo.png"/ class="img-rounded">
+                <br>
+                <h4 class="modal-title" id="myModalLabel">Agent LogIn</h4>
+                <p ng-show="message">{{message}}</p>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label" for="username">Username:</label>
+                <div class="col-sm-5">
+                    <input type="email" class="form-control input-sm" id="email" placeholder="Email"
+                ng-model="agent.email" required>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-offset-2 control-label" for="password">Password:</label>
+                <div class="col-sm-5">
+                    <input type="passowrd" class="form-control input-sm" id="password" placeholder="Password" ng-model="agent.password" required>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-5">
+                  <button type="submit" class="btn btn-info btn-sm loginbutton1" >Agent Login</button>
+                </div>
+            </div>
+            
+    </form>
+              

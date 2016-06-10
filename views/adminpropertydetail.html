@@ -1,0 +1,375 @@
+    <div>
+      <ol class="breadcrumb">
+          <li><a ui-sref="app">Home</a></li>
+          <li><a ui-sref="app.propertylist">Property List</a></li>
+          <li><a>{{property.address}}</a></li>
+      </ol>
+    </div>
+    <div>
+      <ul id="lightSlider">
+        <li data-thumb="{{property.images[0].path}}" data-src="{{property.images[0].path}}">
+            <img class="slidelarge"src="{{property.images[0].path}}">
+        </li>
+        <li data-thumb="{{property.images[1].path}}" data-src="{{property.images[1].path}}">
+            <img src="{{property.images[1].path}}">
+        </li>
+        <li data-thumb="{{property.images[2].path}}" data-src="{{property.images[2].path}}">
+            <img src="{{property.images[2].path}}">
+        </li>
+        <li data-thumb="{{property.images[3].path}}" data-src="{{property.images[3].path}}">
+            <img src="{{property.images[3].path}}">
+        </li>
+      </ul>
+    </div>
+    <hr>
+
+    <div class="container" id="propertyinfomation">
+        <div class="row row-content col-md-9" ng-controller="PropertyDetailController">
+            <div class="col-xs-12" ng-if="!showProperty">
+                <h3>{{message}}</h3>
+            </div>
+            <div class="container col-xs-12" ng-if="showProperty">
+                <div class="content">
+                    <div class="row">
+                      <h2 class="media-heading col-md-7">{{property.address}}</h2>
+                    </div>
+
+                    <div>
+                      <p>Land Area <span class="badge"> {{property.size}} sqm</span></p>
+                    </div>
+
+                    <div>
+                      <p>Price approx: ${{property.price}}</p>
+                    </div>
+
+                    <div>
+                      <i class="fa fa-car" aria-hidden="true"></i>
+                      <span class="badge">{{property.car}}</span>
+
+                      <i class="fa fa-tint" aria-hidden="true"></i>
+                      <span class="badge">{{property.washroom}}</span>
+
+                      <i class="fa fa-bed" aria-hidden="true"></i>
+                      <span class="badge">{{property.bedroom}}</span>
+
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>
+                      <span class="label label-danger label-xs">{{property.areacode}}</span>
+                    </div>
+                    <br>
+                    <div>
+                      <i class="fa fa-home" aria-hidden="true"></i>
+                      <a data-toggle="modal" data-target="#floorplan">FloorPlan
+                      </a>
+                    </div>
+
+                    <hr>
+                    
+                    <div>
+                      <p id="propertyaddress">{{property.address}}</p>
+
+                      <p>{{property.title}}</p>
+
+                      <p class="propertyds" >{{property.description | limitTo: 100 }}</p>
+
+                      <button type="button" class="btn btn-default" ui-sref="app.agentcontact"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Contact Us</button>
+                    </div>
+
+                    <hr>
+                    <div>
+                      <div class="col-md-6">
+                          <h3>House Situation</h3>
+                          <p>General Features</p>
+                          <p>Property Type:{{property.propertytype[0]}}</p>
+                          <p>Bedrooms:{{property.bedroom}}</p>
+                          <p>Land Size:{{property.size}}</p>
+                      </div> 
+
+                      <div class="col-md-6">
+                          <h3>&nbsp</h3>
+                          <p>Outdoor Features</p>
+                          <p>&nbsp</p>
+                          <p>Garage Spaces:{{property.car}}</p>
+                          <p>Other Feartures:</p>
+                      </div> 
+                      <hr>
+
+                      <div class="col-md-6">
+                        <br>
+                        <p>Floorplans & Interactive Tours</p>
+                        <a data-toggle="modal" data-target="#floorplansecond"><i class="fa fa-home" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                </div>
+            </div> 
+      </div> 
+      <div class="col-md-3">
+        <label><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i> &nbsp Location</label>
+        <div class="row">
+          <div id="map-canvas" ></div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="container">
+      <div class="container col-md-9">
+        <div id="calculator">
+            <p><i class="fa fa-calculator" aria-hidden="true"></i>Tools & Calculators</p>
+            <a href="https://apps.commbank.com.au/digital/propertyhub/calculator/home-loan-repayments" target="_blank"><img src="../img/cslogo.png" alt="commonwealth" class="img-circle"></a>
+        </div>
+        <div class="container">
+          <label><i class="fa fa-graduation-cap" aria-hidden="true"></i>Nearby School</label>
+          <div class="row row-content">
+            <ul class="media-list">
+                <li class="media" ng-repeat="s in property.schools">
+                      
+                      <div>
+                        <h3>{{s.name}}</h3>
+                      </div>
+
+                </li>
+                  <hr>
+            </ul>
+        </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 pull-right">
+        <div class="thumbnail">
+          <img src="../img/logo.png" alt="logo image">
+          <div class="caption">
+            <h3>About us</h3>
+            <p>Our team specialized in identifying development opportunities, due-diligence and feasibility studies, marketing strategy. You only need to remember that our Agents are among the best in the business. 
+            </p>
+            <address>
+                343 Lt Collins St <br>
+                Melbourne <br>
+                VIC 3000 <br>
+                <i class="fa fa-phone"></i>: +61 (03) 9600 0080<br>
+                <i class="fa fa-envelope"></i> :
+                 <a href="mailto:info@austestate.com.au">info@austestate.com.au</a>
+            </address>
+            <p><a ui-sref="app.contactus" class="btn btn-primary" role="button">Email Agent</a> 
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <a ui-sref="app.agentprofile">Our Profile</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+<!-- Modal -->
+        <div class="modal fade" id="updateProperty" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Property Infomation Update</h4>
+              </div>
+              <div class="modal-body">
+                    <form class="form-horizontal" name="propertyUpdateForm">
+                        <div class="form-group">
+                            <label for="imageTitle" class="col-sm-2 control-label">Title</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="Title input" ng-model="propertyDescription.title">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="area" class="col-sm-2 control-label">Area Post Code</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="Area Post Code" ng-model="propertyDescription.areacode">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">Address</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                                    <input type="text" class="form-control" placeholder="Where is it?" ng-model="propertyDescription.address">
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="price" class="col-sm-2 control-label">Estimated Price</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></div>
+                                    <input type="text" class="form-control" placeholder="Price" ng-model="propertyDescription.price">
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="car" class="col-sm-2 control-label">Parking</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-car" aria-hidden="true"></i></div>
+                                    <input type="text" class="form-control" placeholder="How many car?" ng-model="propertyDescription.car">
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="washroom" class="col-sm-2 control-label">Washroom</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-tint" aria-hidden="true"></i></div>
+                                    <input type="text" class="form-control" placeholder="How many washrooms?" ng-model="propertyDescription.washroom">
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="washroom" class="col-sm-2 control-label">Bedroom</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-bed" aria-hidden="true"></i></div>
+                                    <input type="text" class="form-control" placeholder="How many bedrooms?" ng-model="propertyDescription.bedroom">
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                                <label for="description" class="col-sm-2 control-label">Property Descriptiopn</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" id="description" name="description" rows="12"
+                                    ng-model="propertyDescription.description"></textarea>
+                                </div>
+                          </div>
+
+                          
+                          <div class="form-group">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <select class="form-control" ng-model="propertyDescription.purchasetype" ng-options="p.value as p.label for p in purchasetype">
+                                        <option value="">buyer's purchase type</option>
+                                    </select>
+                                </div>
+                            </div>
+                                
+                            <div class="form-group">
+                                    <div class="col-sm-3 col-sm-offset-2">
+                                        <select class="form-control" ng-model="propertyDescription.state" ng-options="s.value as s.label for s in state">
+                                            <option value="">State</option>
+                                        </select>
+                                    </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                        <select class="form-control" ng-model="propertyDescription.propertytype" ng-options="p.value as p.label for p in propertytype">
+                                            <option value="">All property type</option>
+                                        </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                        <select class="form-control" ng-model="propertyDescription.propertystatus" ng-options="s.value as s.label for s in propertystatus">
+                                            <option value="">Property Status</option>
+                                        </select>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" ng-click="updateProperty()">save changes</button>
+
+                        </form>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+<!-- floor Modal -->
+<div class="modal fade" id="floorplan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body floor">
+        <img class="floorimg" src="{{property.drafts[0].path}}"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">     Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--second floor Modal -->
+<div class="modal fade" id="floorplansecond" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-content">
+      <div class="modal-body floor">
+        <img class="floorimg" src="{{property.drafts[0].path}}"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById("map-canvas"), {
+          zoom: 15,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        geocodeAddress(geocoder, map);
+
+        console.log('test');
+
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById("propertyaddress").innerHTML;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC20fPOL6sD5-8AyE4MR3zwqJzbJOUe934&signed_in=true&callback=initMap"
+        async defer>
+    </script>
+    <script type="text/javascript">
+       $(document).ready(function() {
+        $('#lightSlider').lightSlider({
+          gallery:true,
+          item:1,
+          loop:true,
+          thumbItem:9,
+          slideMargin:0,
+          enableDrag: false,
+          currentPagerPosition:'left',
+          onSliderLoad: function(el) {
+              el.lightGallery({
+                  selector: '#imageGallery .lslide'
+              });
+          }   
+        });  
+    });
+    </script>
+    
+   
+
+      

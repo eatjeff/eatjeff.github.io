@@ -1,0 +1,51 @@
+<div>
+  <ol class="breadcrumb">
+      <li><a ui-sref="app">Home</a></li>
+      <li><a ui-sref="app.propertylist">Property List</a></li>
+  </ol>
+</div>
+
+<div class="container" ng-controller="PropertyController">
+        <div class="row row-content">
+            <ul class="media-list">
+                <li class="media" ng-repeat="pro in properties">
+                    <div class="media-left media-middle">
+                        <a ui-sref="app.propertydetail({id: pro._id})">
+                            <img class="media-object" width="300px" height="200px"src="{{pro.images[0].path}}"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <div>
+                            <h2 class="media-heading propertytitle">{{pro.title}}</h2>
+                        </div>
+
+                        <i class="fa fa-car" aria-hidden="true"></i>
+                        <span class="badge">{{pro.car}}</span>
+
+                        <i class="fa fa-tint" aria-hidden="true"></i>
+                        <span class="badge">{{pro.washroom}}</span>
+
+                        <i class="fa fa-bed" aria-hidden="true"></i>
+                        <span class="badge">{{pro.bedroom}}</span>
+                        
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span class="label label-danger label-xs">{{pro.areacode}}</span>
+
+                        <br>
+                        <p class="propertylistaddress">{{pro.address}}</p>
+
+                        <p class="propertyds">{{pro.description}}</p>
+
+                        <a ui-sref="app.propertydetail({id: pro._id})" color="BLACK">Details</a><span class="glyphicon glyphicon-chevron-right" aria-hidden="true" ></span>
+
+                    </div>
+                </li>
+                <hr>
+            </ul>
+    </div>
+</div>
+
+
+
+    
