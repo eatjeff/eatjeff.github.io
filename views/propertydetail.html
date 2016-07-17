@@ -78,6 +78,16 @@
 
                       <p class="propertyds" >{{property.description | limitTo: 100 }}</p>
 
+                      <div class="well" height="150px">
+                        <h4>Open for Inspection Times</h4>
+                        <hr>
+                        <p>{{property.inspectionbegindate| limitTo: 10 }}  <span>&nbsp {{property.inspectiontime}}</span></p>
+
+                        <p>{{property.inspectionenddate | limitTo: 10 }} <span>&nbsp
+                        {{property.inspectiontime}}</span></p>
+
+                      </div>
+                      
                       <button type="button" class="btn btn-default" ui-sref="app.agentcontact"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Contact Us</button>
                     </div>
 

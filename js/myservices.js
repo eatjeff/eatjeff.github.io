@@ -116,17 +116,20 @@ angular.module('ausestateApp')
             return myAgentObject;
         }])
 
-        .service('propertyFactory', ['$resource','baseURL', function($resource,baseURL) {
-    
+        .service('propertyFactory', ['$rootScope','$firebaseArray','FIREBASE_URL', function($rootScope,$firebaseArray,FIREBASE_URL) {
+                var ref = new Firebase(FIREBASE_URL);
+                var propertyRef = new Firebase(FIREBASE_URL + "properties");
+                
+                var propertiesInfo = $firebaseArray(propertyRef);
                 
                 this.getAllProperties = function(){
                     
-                    return $resource(baseURL + "properties/:id",null,{'get':{method:'GET'}});
+                    return propertiesInfo;
                     
                 };
 
 
-                this.getAllPropertiesByAreacode = function(){
+                /*this.getAllPropertiesByAreacode = function(){
                     
                     return $resource(baseURL + "properties/navsearch",null,{'query':{method:'GET', isArray:true}});
                     
@@ -173,13 +176,35 @@ angular.module('ausestateApp')
                     
                     return $resource(baseURL + "properties/query",null,{'query':{method:'GET', isArray:true}});
                     
+                };*/
+                 
+                this.postProperty = function(property){
+                    propertiesInfo.$add({
+                        title:property.title,
+                        areacode:property.areacode,
+                        inspectionbegindate:property.inspectionbegindate,
+                        inspectionenddate:property.inspectionenddate,
+                        inspectiontime:property.inspectiontime,
+                        auctiondate:property.auctiondate,
+                        auctiontime:property.auctiontime,
+                        address:property.address,
+                        size:property.size,
+                        price:property.price,
+                        car:property.car,
+                        washroom:property.washroom,
+                        bedroom:property.bedroom,
+                        propertystatus:property.propertystatus,
+                        description:property.description,
+                        purchasetype:property.purchasetype,
+                        state:property.state,
+                        propertytype:property.propertytype,
+                        date:Firebase.ServerValue.TIMESTAMP
+                    }).then(function(){
+                        $rootScope = "property created!"
+                    });
                 };
 
-                this.postProperty = function(){
-                    return $resource(baseURL + "properties",null,{'save':{method:'POST'}});
-                };
-
-                this.postVideo = function(){
+                /*this.postVideo = function(){
                     return $resource(baseURL + "properties/video",null,{'save':{method:'POST'}});
                 };
 
@@ -193,31 +218,47 @@ angular.module('ausestateApp')
 
                 this.deleteProperty = function(){
                     return $resource(baseURL + "properties/:id",null,{'delete':{method:'DELETE'}});
-                }
+                }*/
 
 
         }])
-        .service('newsFactory', ['$resource','baseURL', function($resource,baseURL) {
-    
-                
+        .service('newsFactory', ['$rootScope','$firebaseArray','FIREBASE_URL', function($rootScope,$firebaseArray,FIREBASE_URL) {
+                var ref = new Firebase(FIREBASE_URL);
+                var newsRef = new Firebase(FIREBASE_URL + "news");
+                var newsimagesref = new Firebase(FIREBASE_URL + "newsimages");
+
+                var newsInfo = $firebaseArray(newsRef);
+                var newsImageInfo = $firebaseArray(newsimagesref);
+
                 this.getAllNews = function(){
                     
-                    return $resource(baseURL + "news/:id",null,{'get':{method:'GET',isArray:true}});
+                    return newsInfo;
                     
                 };
 
-                this.postNews = function(){
-                    return $resource(baseURL + "news",null,{'save':{method:'POST'}});
+                this.postNews = function(news){
+                    newsInfo.$add({
+                        title:news.title,
+                        author:news.author,
+                        content:news.content,
+                        date:Firebase.ServerValue.TIMESTAMP
+                    }).then(function(){
+                        $rootScope = "news created!"
+                    });
+                    
                 };
 
-                this.updateNews = function(){
+                /*this.updateNews = function(){
                     return $resource(baseURL + "news/:id",null,{'update':{method:'PUT'}});
+                };*/
+
+                this.deleteNews = function(key){
+                    newsInfo.$remove(key);
                 };
 
-                this.deleteNews = function(){
-                    return $resource(baseURL + "news/:id",null,{'delete':{method:'DELETE'}});
+                this.getNewsImages = function(){
+                    return newsImageInfo;
                 };
-
                
 
 

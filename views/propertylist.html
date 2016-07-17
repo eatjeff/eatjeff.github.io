@@ -8,14 +8,10 @@
 <div class="container" ng-controller="PropertyController">
         <div class="row row-content">
             <ul class="media-list">
-                <li class="media" ng-repeat="pro in properties">
-                    <div class="media-left media-middle">
-                        <a ui-sref="app.propertydetail({id: pro._id})">
-                            <img class="media-object" width="300px" height="200px"src="{{pro.images[0].path}}"/>
-                        </a>
-                    </div>
+                <li ng-repeat="(key, pro) in properties">
                     
-                    <div class="media-body">
+                    
+                    <div >
                         <div>
                             <h2 class="media-heading propertytitle">{{pro.title}}</h2>
                         </div>
@@ -43,7 +39,11 @@
                 </li>
                 <hr>
             </ul>
-    </div>
+
+        </div>
+        <div class="row row-content" data-pagination="" data-num-pages="numPages()" data-current-page="currentPage" data-max-size="maxSize"  
+        data-boundary-links="true">
+        </div>
 </div>
 
 

@@ -110,40 +110,39 @@ angular.module('ausestateApp')
             });*/
             
         }])
-
-        .controller('ImageUploadController', ['$scope','Upload',function($scope,Upload) {
+        
+        .controller('ImageUploadController', ['$scope','Upload','$firebase','FIREBASE_URL',function($scope,Upload,$firebase,FIREBASE_URL) {
 
             
             $scope.title="";
 
-            $scope.images = {type:""};
+            //firebase
+            var fb = new Firebase(FIREBASE_URL + '/properties' + '/normalimages');
 
-            $scope.types = [{value:"normal", label:"NORMAL"}, {value:"draft",label:"DRAFT"}];
+            var images;
 
-            
             //not workign as expected, images not uploaded to the one of the server folder
             $scope.submitImage = function() {
               if ($scope.formImage.file.$valid && $scope.file) {
                 console.log($scope.title);
+                images = $scope.file;
                 $scope.upload($scope.file);
               }
             };
 
-           
-            
-            $scope.upload = function (file) {
-                Upload.upload({
-                    url: 'http://localhost:3000/uploads/insert',
-                    method: 'POST',
-                    fileFormDataName: 'file',
-                    data: {file: file, 'title': $scope.title,'type': $scope.images.type}
-                }).then(function (resp) {
-                    console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-                }, function (resp) {
-                    console.log('Error status: ' + resp.status);
-                }, function (evt) {
-                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            $scope.upload = function (files) {
+                Upload.base64DataUrl(files).then(function(base64Urls){
+                    fb.push({
+                        images:base64Urls
+                    },function(error){
+                        if(error){
+                           console.log("Error:",error);
+                        }
+                        else{
+                            console.log("Post set successfully!");
+                            console.log($scope.file);
+                        }
+                    })
                 });
             };
 
@@ -194,40 +193,30 @@ angular.module('ausestateApp')
             
         }])
 
-        .controller('SchoolController', ['$scope','propertyFactory',function($scope,propertyFactory) {
-
-            $scope.school = {title:"",name:"",address:"",tel:"",email:"",website:"",schooltype:"",schoollevel:""};
-
-            $scope.schooltype = [{value:"co-ed", label:"CO-ED"}, 
-                                {value:"government",label:"GOVERNMENT"},
-                                {value:"boys & co-ed",label:"BOYS & CO-ED"},
-                                {value:"boys & government",label:"BOYS & GOVERNMENT"},
-                                {value:"girls & co-ed",label:"GIRLS & CO-ED"},
-                                {value:"girls & government",label:"GIRLS & GOVERNMENT"},
-                                {value:"catholic",label:"CATHOLIC"}];
-
-            $scope.schoollevel = [{value:"primary", label:"PRIMARY"}, 
-                                {value:"secondary",label:"SECONDARY"}];
-
-            $scope.uploadSchool = function(){
-                console.log($scope.school);
-                propertyFactory.postSchool().save({},$scope.school);
-            }
-            
-        }])
-
         .controller('PropertyController', ['$scope','$stateParams','propertyFactory',function($scope,$stateParams,propertyFactory) {
             
-            $scope.showProperties = false;
+            /*$scope.showProperties = false;
             $scope.propertyId = "";
 
-            $scope.properties = propertyFactory.getAllProperties().query(
-                function(response){
-                    $scope.properties = response;
-                    $scope.showProperties = true;
-                },
-                function(response){
-                    $scope.message = "Error: " + response.status + " " + response.statusText;
+            //pagination
+            $scope.filteredproperties = [];
+            $scope.currentPage = 1;
+            $scope.numberPerPage = 3;
+            $scope.maxSize = 5;*/
+
+            $scope.properties = propertyFactory.getAllProperties();
+
+            /*$scope.numPages = function(){
+                return Math.ceil($scope.properties.length/$scope.numPerPage);
+            };
+
+             $scope.$watch('currentPage + numPerPage', function() {
+                var begin = (($scope.currentPage - 1) * $scope.numPerPage);
+                var end = begin + $scope.numPerPage;
+                
+                $scope.filteredproperties = $scope.properties.slice(begin, end);
+                console.log($scope.properties);
+                console.log($scope.filteredproperties);
             });
 
             $scope.residential = propertyFactory.getAllResidentials().query(
@@ -282,12 +271,77 @@ angular.module('ausestateApp')
                 },
                 function(response){
                     $scope.message = "Error: " + response.status + " " + response.statusText;
-            });
+            });*/
 
         }])
 
-        .controller('PropertyDetailController', ['$scope','$stateParams','propertyFactory',function($scope,$stateParams,propertyFactory) {
-            console.log($stateParams.id);
+        .controller('PropertyDetailController', ['$scope','$stateParams','Upload','$firebase','$firebaseArray','$firebaseObject','FIREBASE_URL',function($scope,$stateParams,Upload,$firebase,$firebaseArray,$firebaseObject,FIREBASE_URL) {
+            //firebase
+            $scope.whichproperty = $stateParams.id;
+
+            var fb = new Firebase(FIREBASE_URL + 'properties/' + $scope.whichproperty +'/images'+ '/normalimages');
+
+            var images;
+
+            //not workign as expected, images not uploaded to the one of the server folder
+            $scope.submitImage = function() {
+              if ($scope.formImage.file.$valid && $scope.file) {
+                console.log($scope.title);
+                images = $scope.file;
+                $scope.upload($scope.file);
+              }
+            };
+
+            $scope.upload = function (files) {
+                Upload.base64DataUrl(files).then(function(base64Urls){
+                    fb.push({
+                        images:base64Urls
+                    },function(error){
+                        if(error){
+                           console.log("Error:",error);
+                        }
+                        else{
+                            console.log("Post set successfully!");
+                            console.log($scope.file);
+                        }
+                    })
+                });
+            };
+
+            //add school
+            $scope.school = {name:"",address:"",tel:"",email:"",website:"",schooltype:"",schoollevel:""};
+
+            $scope.schooltype = [{value:"co-ed", label:"CO-ED"}, 
+                                {value:"government",label:"GOVERNMENT"},
+                                {value:"boys & co-ed",label:"BOYS & CO-ED"},
+                                {value:"boys & government",label:"BOYS & GOVERNMENT"},
+                                {value:"girls & co-ed",label:"GIRLS & CO-ED"},
+                                {value:"girls & government",label:"GIRLS & GOVERNMENT"},
+                                {value:"catholic",label:"CATHOLIC"}];
+
+            $scope.schoollevel = [{value:"primary", label:"PRIMARY"}, 
+                                {value:"secondary",label:"SECONDARY"}];
+
+            var ref = new Firebase(FIREBASE_URL + 'properties/' + $scope.whichproperty +'/schools');
+
+            $scope.uploadSchool = function(){
+                var schoolsinfo = $firebaseArray(ref);
+
+                var data = {
+                    name:$scope.school.name,
+                    address:$scope.school.address,
+                    tel:$scope.school.tel,
+                    email:$scope.school.email,
+                    website:$scope.school.website,
+                    schooltype:$scope.school.schooltype,
+                    schoollevel:$scope.school.schoollevel
+                };
+
+                schoolsinfo.$add(data);
+
+            }
+
+            /*console.log($stateParams.id);
             $scope.showProperty = false;
 
             $scope.propertyDescription = {title:"", areacode:"",address:"", price:"",car:"",washroom:"",bedroom:"",propertystatus:"",description:"",purchasetype:"",state:"",propertytype:""};
@@ -344,7 +398,7 @@ angular.module('ausestateApp')
 
         .controller('PropertyTypeController', ['$scope','propertyFactory',function($scope,propertyFactory) {
             
-            $scope.showProperties = false;
+            /*$scope.showProperties = false;
 
             $scope.properties = propertyFactory.getAllProperties().query(
                 function(response){
@@ -353,7 +407,7 @@ angular.module('ausestateApp')
                 },
                 function(response){
                     $scope.message = "Error: " + response.status + " " + response.statusText;
-            });
+            });*/
 
             
 
@@ -362,7 +416,7 @@ angular.module('ausestateApp')
 
         .controller('PropertyUpdateController', ['$scope','propertyFactory',function($scope,propertyFactory) {
             
-            $scope.updatePropertyDescription = {title:"", areacode:"",address:"", price:"",car:"",washroom:"",bedroom:"",propertystatus:"",description:"",updatePurchasetype:"",updateState:"",updatePropertytype:""};
+            /*$scope.updatePropertyDescription = {title:"", areacode:"",address:"", price:"",car:"",washroom:"",bedroom:"",propertystatus:"",description:"",updatePurchasetype:"",updateState:"",updatePropertytype:""};
 
             $scope.updatePurchasetype = [{value:"buy", label:"BUY"}, {value:"rent",label:"RENT"},{value:"share", label:"SHARE"}];
 
@@ -377,7 +431,7 @@ angular.module('ausestateApp')
             $scope.updatePropertytype = [{value:"apartment & unit",label:"APARTMENT & UNIT"},
                                     {value:"townhouse", label:"TOWNHOUSE"}, {value:"villa",label:"VILLA"},{value:"block of units",label:"BLOCK OF UNITS"},{value:"land",label:"LAND"},{value:"rural",label:"RURAL"}];
 
-            //$scope.propertyDescription.price = Number($scope.propertyDescription.price.replace(/[^0-9\.]+/g,""));
+            //$scope.propertyDescription.price = Number($scope.propertyDescription.price.replace(/[^0-9\.]+/g,""));*/
 
             
 
@@ -387,46 +441,28 @@ angular.module('ausestateApp')
             
             $scope.News = {title:"", author:"",content:""};
 
-
             $scope.newssubmit = function()
             {
                 console.log($scope.News);
-                newsFactory.postNews().save({},$scope.News);
+                newsFactory.postNews($scope.News);
             }
 
-            $scope.news = newsFactory.getAllNews().query(
-                function(response){
-                    $scope.news = response;
-                    $scope.showProperties = true;
-                },
-                function(response){
-                    $scope.message = "Error: " + response.status + " " + response.statusText;
-            });
+            $scope.newslist = newsFactory.getAllNews();
 
-            $scope.new = newsFactory.getAllNews().get({id:$stateParams.id})
-            .$promise.then(
-                    function(response){
-                        $scope.property = response;
-                        $scope.showProperty = true;
-                    },
-                    function(response) {
-                        $scope.message = "Error: "+response.status + " " + response.statusText;
-                    }
-
-            );
-
-            $scope.deleteNews = function(){
-                newsFactory.deleteNews().delete({id:$stateParams.id});
+            $scope.delete = function(key){
+                newsFactory.deleteNews(key);
             }
             
-            $scope.updateNews = function(){
-                newsFactory.updateNews().update({id:$stateParams.id},$scope.News);
-            }
+            $scope.newsImages = newsFactory.getNewsImages();
 
+
+            /*$scope.updateNews = function(){
+                newsFactory.updateNews().update({id:$stateParams.id},$scope.News);
+            }*/
 
         }])
 
-        .controller('NewsImageUploadController', ['$scope','Upload',function($scope,Upload) {
+        /*.controller('NewsImageUploadController', ['$scope','Upload',function($scope,Upload) {
 
             
             $scope.title="";
@@ -456,8 +492,74 @@ angular.module('ausestateApp')
             };
 
             
-        }])
+        }])*/
+        //using ng-file-load to uplaod base64 to database
+        .controller('NewsImageUploadController', ['$scope','Upload','$stateParams','$firebase','$firebaseArray','FIREBASE_URL',function($scope,Upload,$firebase,$stateParams,FIREBASE_URL,$firebaseArray) {
 
+            
+            $scope.whichnews = $stateParams.id;
+            console.log($scope.whichnews);
+
+            //firebase
+            var fbref = new Firebase(FIREBASE_URL + '/news'+ $scope.whichnews +"newsimages");
+
+            var images;
+
+            //not workign as expected, images not uploaded to the one of the server folder
+            $scope.submitNewsImage = function() {
+              if ($scope.formNewsImage.file.$valid && $scope.file) {
+                images = $scope.file;
+                $scope.upload($scope.file);
+              }
+            };
+
+            $scope.upload = function (files) {
+                Upload.base64DataUrl(files).then(function(base64Urls){
+                    fb.push({
+                        images:base64Urls
+                    },function(error){
+                        if(error){
+                           console.log("Error:",error);
+                        }
+                        else{
+                            console.log("Post set successfully!");
+                            console.log($scope.file);
+                        }
+                    })
+                });
+            }
+        }])
+        /*.controller('NewsImageUploadController', ['$scope','Upload',function($scope,Upload) {
+
+            
+            $scope.title="";
+            
+            //not workign as expected, images not uploaded to the one of the server folder
+            $scope.submitNewsImage = function() {
+              if ($scope.formNewsImage.file.$valid && $scope.file) {
+                console.log($scope.title);
+                $scope.upload($scope.file);
+              }
+            };
+
+            $scope.upload = function (file) {
+                Upload.upload({
+                    url: 'http://localhost:3000/news/uploadimage',
+                    method: 'POST',
+                    fileFormDataName: 'file',
+                    data: {file: file, 'title': $scope.title}
+                }).then(function (resp) {
+                    console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                }, function (resp) {
+                    console.log('Error status: ' + resp.status);
+                }, function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                });
+            };
+
+            
+        }])*/
         .controller('PartnersiteController', ['$scope','sitesFactory','$stateParams',function($scope,sitesFactory,$stateParams) {
             
             $scope.partnersite = {name:"", link:""};
@@ -671,8 +773,8 @@ angular.module('ausestateApp')
 
             $scope.submitPropertyInfo = function()
             {
-                //console.log($scope.propertyDescription);
-                propertyFactory.postProperty().save({},$scope.propertyDescription);
+                console.log($scope.propertyDescription);
+                propertyFactory.postProperty($scope.propertyDescription);
             }
 
         }])

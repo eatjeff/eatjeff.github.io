@@ -201,6 +201,15 @@ angular.module('ausestateApp', ['ui.bootstrap','ui.router','firebase','ngResourc
                     }]
                 }
             })
+            .state('app.adminaddpropertydetail', {
+                url:'adminpropertylist/:id',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/adminaddpropertydetail.html',
+                        controller  : 'PropertyDetailController'
+                     }
+                }
+            })
             .state('app.propertylist', {
                 url:'propertylist',
                 views: {
@@ -268,12 +277,12 @@ angular.module('ausestateApp', ['ui.bootstrap','ui.router','firebase','ngResourc
                      }
                 }
             })
-            .state('app.adminnewsdetail', {
+            .state('app.adminaddnewsdetail', {
                 url:'adminnewslist/:id',
                 views: {
                     'content@': {
-                        templateUrl : 'views/adminnewsdetail.html',
-                        controller  : 'NewsController'
+                        templateUrl : 'views/adminaddnewsdetail.html',
+                        controller  : 'NewsImageUploadController'
                      }
                 }
             })

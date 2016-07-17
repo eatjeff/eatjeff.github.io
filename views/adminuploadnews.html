@@ -10,7 +10,7 @@
                                             <input type="text" class="form-control" placeholder="Title input" ng-model="News.title">
                                         </div>
                                       </div>
-
+                                      
                                       <div class="form-group">
                                             <label for="description" class="col-sm-2 control-label">News Author</label>
                                             <div class="col-sm-8">
@@ -27,54 +27,16 @@
                                       </div>
 
                                       
-
-
-
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" ui-sref="app.adminnewslist" class="btn btn-default" ng-click="newssubmit()"> News Submit</button>
-                                        </div>
-                                    </div>
-
+                                      <div class="form-group">
+                                          <div class="col-sm-offset-2 col-sm-10">
+                                              <button type="submit" ui-sref="app.adminnewslist" class="btn btn-default" ng-click="newssubmit()"> News Submit</button>
+                                          </div>
+                                      </div>
+                              
                                     </form>
                               </div>
                         </div>
 
-                        <div class="panel panel-default">
-                          <div class="panel-heading">Uploading News Image</div>
-                              <div class="panel-body">
-                                    <form class="form-horizontal" ng-controller="NewsImageUploadController" name="formNewsImage" enctype="multipart/form-data" method="post">
-                                      <div class="form-group">
-                                        <label for="imageTitle" class="col-sm-2 control-label">Title</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" placeholder="Title input" ng-model="title">
-                                        </div>
-                                      </div>
-
-                                      <div class="form-group">
-                                        <label for="InputFile" class="col-sm-2 control-label">News Image Upload</label>
-                                        <div class="col-sm-8">
-                                            <input type="file" id="InputFile" ngf-select ng-model="file" name="file">
-                                        </div>
-                                      </div>
-
-                                      <div ngf-thumbnail="file">
-                                        <label for="filepreview" class="col-sm-2 control-label">File Preview</label>
-                                        <div class="col-sm-8">
-                                            <img ngf-src="file" ngf-background="file" ngf-resize="{width: 100, height: 100}"ngf-thumbnail="file" class="thumb">
-                                        </div>
-                                      </div>
-                                      
-                                      <br>
-
-                                      <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-default submit" ng-click="submitNewsImage()">Submit News Image</button>
-                                        </div>
-                                      </div>
-
-                                    </form>
-                              </div>
-                        </div>
+                        
                       </div>
                     </div>

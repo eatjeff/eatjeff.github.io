@@ -6,23 +6,20 @@
 </div>
 
 
-<div class="container" ng-controller="PartnersiteController">
-        <div class="row row-content">
-            <ul class="media-list">
-              <li class="media" ng-repeat="n in news">
-                  <div class="media-left media-middle">
-                    <a>
-                        <img class="media-object" width="300px" height="200px"src="{{n.images[0].path}}"/>
-                    </a>
-                  </div>
-                  <div class="media-body">
-                      <h2 class="media-heading propertytitle">{{n.title}} </h2>
-                      <a ui-sref="app.adminsitedetail({id: n._id})">Detail</a>
-                      <p class="propertyds">{{n.author}}</p>
-                      <p class="propertyds">{{n.content}}</p>
+<div class="container" ng-controller="NewsController">
+    <div class="row row-content">
+        <ul class="media-list">
+          <li class="media" ng-repeat="(key , n) in newslist">
+            <div>
+              <button ng-click="delete(key)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
-                  </div>
-              </li>
-            </ul>
+              <h2 class="media-heading propertytitle">{{n.title}} </h2>
+              <a ui-sref="app.adminaddnewsdetail({id: n.$id})">Detail</a>
+              <p class="propertyds">{{n.author}}</p>
+              <p class="propertyds">{{n.content}}</p>
+            </div>
+          </li>
+        </ul>
     </div>
 </div>
+
